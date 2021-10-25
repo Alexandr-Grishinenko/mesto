@@ -2,5 +2,19 @@
   display: grid;
   grid-template-columns: repeat(3, 282px);
   grid-template-rows: repeat(2, 361px);
+  justify-content: center;
+  align-content: center;
   gap: 20px 17px;
+}
+
+@media screen and (max-width: 934px) {
+  .places-cards {
+    grid-template-columns: repeat(2, 282px);
+  }
+}
+
+@media screen and (max-width: 624px) {
+  .places-cards {
+    grid-template-columns: 282px;
+  }
 }

@@ -1,5 +1,13 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/fonts.css);
+@import url(../blocks/popup-for-edit/popup-for-edit.css);
+@import url(../blocks/popup-for-edit/__container/popup-for-edit__container.css);
+@import url(../blocks/popup-for-edit/__form/popup-for-edit__form.css);
+@import url(../blocks/popup-for-edit/__title/popup-for-edit__title.css);
+@import url(../blocks/popup-for-edit/__input-container/popup-for-edit__input-container.css);
+@import url(../blocks/popup-for-edit/__form-item/popup-for-edit__form-item.css);
+@import url(../blocks/popup-for-edit/__handlers/);
+@import url(../blocks/popup-for-edit/__save-button/popup-for-edit__save-button.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/page/__container/page__container.css);
 @import url(../blocks/page/__header/page__header.css);
@@ -22,4 +30,5 @@
 @import url(../blocks/card/__title/card__title.css);
 @import url(../blocks/card/__like-button/card__like-button.css);
 @import url(../blocks/footer/footer.css);
+@import url(../blocks/page/__footer/page__footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);

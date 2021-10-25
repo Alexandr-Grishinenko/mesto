@@ -1,4 +1,15 @@
 .content__profile {
-  width: 100%;
   margin-bottom: 50px;
+}
+
+@media screen and (max-width: 934px) {
+  .content__profile {
+    margin: 0 27px 50px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .content__profile {
+    margin: 0 20px 36px;
+  }
 }

@@ -1,11 +1,35 @@
 .profile__account-name {
-  margin: 0;
+  margin: 0 0 16px;
   font-style: normal;
   font-weight: 500;
   font-size: 42px;
   line-height: 48px;
-  max-width: 400px;
+  max-width: 480px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+@media screen and (max-width: 934px) {
+  .profile__account-name {
+    max-width: 336px;
+    margin-bottom: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .profile__account-name {
+    max-width: 360px;
+    font-size: 35px;
+    line-height: 41px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile__account-name {
+    max-width: 200px;
+    font-size: 27px;
+    line-height: 33px;
+  }
 }

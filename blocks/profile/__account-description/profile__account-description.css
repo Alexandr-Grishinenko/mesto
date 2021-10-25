@@ -4,4 +4,29 @@
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
+  max-width: 480px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 934px) {
+  .profile__account-description {
+    max-width: 336px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .profile__account-description {
+    margin-bottom: 36px;
+    max-width: 360px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile__account-description {
+    font-size: 14px;
+    line-height: 17px;
+    max-width: 200px;
+  }
 }
