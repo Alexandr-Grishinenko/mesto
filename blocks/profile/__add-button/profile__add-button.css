@@ -6,6 +6,8 @@
   background: url(../../../images/add-button.svg) center no-repeat #000;
   background-size: 22px;
   margin-left: auto;
+  cursor: pointer;
+  border-radius: 2px;
 }
 
 @media screen and (max-width: 768px) {

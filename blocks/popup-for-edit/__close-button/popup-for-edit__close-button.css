@@ -1,0 +1,11 @@
+.popup-for-edit__close-button {
+  border: 0;
+  background: url(../../../images/close.svg) center no-repeat;
+  background-size: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  cursor: pointer;
+}

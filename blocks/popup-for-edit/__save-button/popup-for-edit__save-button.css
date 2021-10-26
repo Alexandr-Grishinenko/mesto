@@ -1,0 +1,21 @@
+.popup-for-edit__save-button {
+  margin: 18px 0 0;
+  padding: 0;
+  min-height: 50px;
+  width: 100%;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  border-radius: 2px;
+  border: 0;
+  cursor: pointer;
+  transition: background-color .2s;
+}
+
+.popup-for-edit__save-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

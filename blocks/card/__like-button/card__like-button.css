@@ -3,5 +3,11 @@
   min-width: 22px;
   min-height: 19px;
   background: url(../../../images/like.svg) center no-repeat;
-  /* background-size: 22px; */
+  background-size: 22px;
+  transition: opacity .2s;
+  cursor: pointer;
+}
+
+.card__like-button:hover {
+  opacity: 0.5;
 }
