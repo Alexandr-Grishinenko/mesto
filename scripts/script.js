@@ -26,10 +26,11 @@ editButton.addEventListener('click', function() {
 );
 
 //Закрытие pop-up по нажатию на крестик
-closeButton.addEventListener('click', function() {
-    editPopup.classList.remove('popup-for-edit_opened');
-  }
-);
+closeButton.addEventListener('click', popupClosing);
+
+function popupClosing() {
+  editPopup.classList.remove('popup-for-edit_opened');
+};
 
 // Закрытие pop-up по нажатию на любое место в окне, кроме контейнера формы
 // Нравится, когда всплывающие окна можно закрыть нажав на любое свободное место
@@ -53,16 +54,7 @@ formElement.addEventListener('submit', function(evt) {
   }
 );
 
-// Изменение отображения кнопки like после нажатия
-let likeButton = content.querySelector('.card__like-button');
-likeButton.addEventListener('click', function() {
-    if (this.classList.contains('card__like-button_liked')) {
-      this.classList.remove('card__like-button_liked')
-    } else {
-      this.classList.add('card__like-button_liked')
-    }
-  }
-);
+
 
 
 
