@@ -19,30 +19,34 @@
       <!-- --------------------- -->
       <main class="content">
 
-        <div class="popup-for-edit">
-          <div class="popup-for-edit__container">
-            <form class="popup-for-edit__form">
-              <h2 class="popup-for-edit__title">Редактировать профиль</h2>
+        <div class="popup">
+          <div class="popup__container">
+            <form class="popup__form">
+              <h2 class="popup__title">Редактировать профиль</h2>
 
-              <fieldset class="popup-for-edit__input-container">
-                <input type="text" id="account-name" name="account-name" value="" class="popup-for-edit__form-item popup-for-edit__form-item_value_name" required>
-                <input type="text" id="account-description" name="account-description" value="" class="popup-for-edit__form-item popup-for-edit__form-item_value_description" required>
+              <fieldset class="popup__input-container">
+                <input type="text" id="account-name" name="account-name" value="" class="popup__form-item popup__form-item_value_name" required>
+                <input type="text" id="account-description" name="account-description" value="" class="popup__form-item popup__form-item_value_description" required>
               </fieldset>
-              <fieldset class="popup-for-edit__handlers">
-                <input type="submit" class="popup-for-edit__save-button" value="Сохранить">
+              <fieldset class="popup__handlers">
+                <input type="submit" class="popup__save-button" value="Сохранить">
               </fieldset>
 
             </form>
-            <button class="popup-for-edit__close-button darkening"></button>
+            <button class="popup__close-button darkening"></button>
           </div>
         </div>
 
+        <!-- ----------- PROFILE ------------ -->
         <section class="profile content__profile">
           <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
           <div class="profile__info">
-            <h1 class="profile__account-name">Жак-Ив Кусто</h1>
+            <div class="profile__name-and-button-wrapper">
+              <h1 class="profile__account-name">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button darkening"></button>
+            </div>
             <p class="profile__account-description">Исследователь океана</p>
-            <button class="profile__edit-button darkening"></button>
+            <!-- <button class="profile__edit-button darkening"></button> -->
           </div>
           <button class="profile__add-button darkening"></button>
         </section>

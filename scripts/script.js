@@ -2,24 +2,24 @@ let content = document.querySelector('.content');
 
 // Объявление переменных - Кнопки открытия/закрытия pop-up
 let editButton = content.querySelector('.profile__edit-button');
-let closeButton = content.querySelector('.popup-for-edit__close-button');
+let closeButton = content.querySelector('.popup__close-button');
 
-let editPopup = content.querySelector('.popup-for-edit');
+let editPopup = content.querySelector('.popup');
 
 // Объявление переменных - Имя и описание аккаунта на странице
 let accountNameOnThePage = content.querySelector('.profile__account-name');
 let accountDescrOnThePage = content.querySelector('.profile__account-description');
 
 // Объявление переменных - Форма редактирования имени и описания аккаунта
-let formElement = content.querySelector('.popup-for-edit__form');
+let formElement = content.querySelector('.popup__form');
 
 // Объявление переменных - Инпуты для редактирования имени и описания аккаунта в форме
-let nameInput = formElement.querySelector('.popup-for-edit__form-item_value_name');
-let jobInput = formElement.querySelector('.popup-for-edit__form-item_value_description');
+let nameInput = formElement.querySelector('.popup__form-item_value_name');
+let jobInput = formElement.querySelector('.popup__form-item_value_description');
 
 // Открытие pop-up; Присвоение инпутам значений имени и описания аккаунта, находящихся на странице
 editButton.addEventListener('click', function() {
-    editPopup.classList.add('popup-for-edit_opened');
+    editPopup.classList.add('popup_opened');
     nameInput.setAttribute('value', accountNameOnThePage.textContent);
     jobInput.setAttribute('value', accountDescrOnThePage.textContent);
   }
@@ -29,7 +29,7 @@ editButton.addEventListener('click', function() {
 closeButton.addEventListener('click', popupClosing);
 
 function popupClosing() {
-  editPopup.classList.remove('popup-for-edit_opened');
+  editPopup.classList.remove('popup_opened');
 };
 
 // Закрытие pop-up по нажатию на любое место в окне, кроме контейнера формы

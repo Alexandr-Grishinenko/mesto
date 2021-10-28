@@ -1,4 +1,4 @@
-.popup-for-edit__close-button {
+.popup__close-button {
   border: 0;
   padding: 0;
   background: url(../../../images/close.svg) center no-repeat;
@@ -12,7 +12,7 @@
 }
 
 @media screen and (max-width:540px) {
-  .popup-for-edit__close-button {
+  .popup__close-button {
     background-size: 22px;
     min-width: 22px;
     min-height: 22px;
