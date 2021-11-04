@@ -31,7 +31,7 @@
         </section>
         <!-- --------------------- -->
         <section class="places-cards content__places-cards">
-          <article class="card">
+          <!-- <article class="card">
             <img class="card__photo" src="./images/karachaevsk.jpg" alt="Карачаевск">
             <div class="card__info">
               <h2 class="card__title">Карачаевск</h2>
@@ -72,7 +72,7 @@
               <h2 class="card__title">Карачаево-Черкесия</h2>
               <button type="button" class="card__like-button" aria-label="Нравится" title="Нравится"></button>
             </div>
-          </article>
+          </article> -->
         </section>
       </main>
       <!-- --------------------- -->
@@ -93,6 +93,16 @@
           <button type="button" class="popup__close-button darkening" aria-label="Закрыть" title="Закрыть"></button>
         </div>
       </div>
+
+      <template id="card-template">
+        <article class="card">
+          <img class="card__photo" src="" alt="">
+          <div class="card__info">
+            <h2 class="card__title"></h2>
+            <button type="button" class="card__like-button" aria-label="Нравится" title="Нравится" ></button>
+          </div>
+        </article>
+      </template>
 
     </div>
     <script src="./scripts/script.js"></script>
