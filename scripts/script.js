@@ -3,8 +3,11 @@ let container = document.querySelector('.page');
 // Объявление переменных - Кнопки открытия/закрытия pop-up
 let editButton = container.querySelector('.profile__edit-button');
 let closeButton = container.querySelector('.popup__close-button');
+let addButton = container.querySelector('.profile__add-button');
 
-let editPopup = container.querySelector('.popup');
+
+let editPopup = container.querySelector('#edit-popup');
+let addPopup = container.querySelector('#add-popup');
 
 // Объявление переменных - Имя и описание аккаунта на странице
 let accountNameOnThePage = container.querySelector('.profile__account-name');
@@ -25,12 +28,21 @@ editButton.addEventListener('click', function() {
   }
 );
 
-//Закрытие pop-up по нажатию на крестик
-closeButton.addEventListener('click', popupClose);
+addButton.addEventListener('click', function() {
+  addPopup.classList.add('popup_opened');
+});
 
-function popupClose() {
-  editPopup.classList.remove('popup_opened');
-};
+//Закрытие pop-up по нажатию на крестик
+// closeButton.addEventListener('click', popupClose);
+
+// function popupClose() {
+//   editPopup.classList.remove('popup_opened');
+//   addPopup.classList.remove('popup_opened');
+// };
+
+closeButton.addEventListener('click', function (evt) {
+  evt.target.classList.remove('popup_opened');
+});
 
 // Функция - Логика редактирования значений имени и описания аккаунта через форму
 function formSubmitHandler (evt) {

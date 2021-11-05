@@ -80,13 +80,27 @@
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
       </footer>
 
-      <div class="popup">
+      <div class="popup" id="edit-popup">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__form" id="edit-form" name="edit-form">
             <fieldset class="popup__input-container">
               <input type="text" id="account-name" name="account-name" value="" class="popup__form-item popup__form-item_value_name" required>
               <input type="text" id="account-description" name="account-description" value="" class="popup__form-item popup__form-item_value_description" required>
+            </fieldset>
+            <button type="submit" name="edit-form" class="popup__save-button">Сохранить</button>
+          </form>
+          <button type="button" class="popup__close-button darkening" aria-label="Закрыть" title="Закрыть"></button>
+        </div>
+      </div>
+
+      <div class="popup" id="add-popup">
+        <div class="popup__container">
+          <h2 class="popup__title">Новое место</h2>
+          <form class="popup__form" id="edit-form" name="edit-form">
+            <fieldset class="popup__input-container">
+              <input type="text" id="account-name" name="account-name" placeholder="Название" value="" class="popup__form-item popup__form-item_value_name" required>
+              <input type="text" id="account-description" name="account-description" placeholder="Ссылка на картинку" value="" class="popup__form-item popup__form-item_value_description" required>
             </fieldset>
             <button type="submit" name="edit-form" class="popup__save-button">Сохранить</button>
           </form>
