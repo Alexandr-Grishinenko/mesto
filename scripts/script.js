@@ -2,13 +2,14 @@ let container = document.querySelector('.page');
 
 // Объявление переменных - Кнопки открытия/закрытия pop-up
 let editButton = container.querySelector('.profile__edit-button');
-let closeButton = container.querySelector('.popup__close-button');
+let closeButtonEdit = container.querySelector('#closeButtonEdit');
+let closeButtonAdd = container.querySelector('#closeButtonAdd');
 let addButton = container.querySelector('.profile__add-button');
 
 
 let editPopup = container.querySelector('#edit-popup');
 let addPopup = container.querySelector('#add-popup');
-
+let popup = container.querySelector('.popup');
 // Объявление переменных - Имя и описание аккаунта на странице
 let accountNameOnThePage = container.querySelector('.profile__account-name');
 let accountDescrOnThePage = container.querySelector('.profile__account-description');
@@ -33,16 +34,19 @@ addButton.addEventListener('click', function() {
 });
 
 //Закрытие pop-up по нажатию на крестик
-// closeButton.addEventListener('click', popupClose);
+closeButtonEdit.addEventListener('click', popupClose);
+closeButtonAdd.addEventListener('click', popupClose);
 
-// function popupClose() {
-//   editPopup.classList.remove('popup_opened');
-//   addPopup.classList.remove('popup_opened');
-// };
+function popupClose() {
+  editPopup.classList.remove('popup_opened');
+  addPopup.classList.remove('popup_opened');
+};
 
-closeButton.addEventListener('click', function (evt) {
-  evt.target.classList.remove('popup_opened');
-});
+// popup.querySelector('.popup__close-button').addEventListener('click', function (evt) {
+//   const evtTarget = evt.target;
+//   console.log(evtTarget.parentElement.parentElement);
+//   // evtTarget.classList.remove('popup_opened');
+// });
 
 // Функция - Логика редактирования значений имени и описания аккаунта через форму
 function formSubmitHandler (evt) {
@@ -96,13 +100,11 @@ function cardsDisplay () {
     cardElement.querySelector('.card__title').textContent = item.name;
     cardElement.querySelector('.card__photo').setAttribute('src', item.link); //сделать изменения для атрибута src 
 
-    console.log(cardElement);
-
     cardsContainer.append(cardElement);
 
   }) 
     
-}
+};
 
 cardsDisplay ();
 
