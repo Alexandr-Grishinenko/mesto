@@ -9,7 +9,7 @@ let addButton = container.querySelector('.profile__add-button');
 
 let editPopup = container.querySelector('#edit-popup');
 let addPopup = container.querySelector('#add-popup');
-let popup = container.querySelector('.popup');
+
 // Объявление переменных - Имя и описание аккаунта на странице
 let accountNameOnThePage = container.querySelector('.profile__account-name');
 let accountDescrOnThePage = container.querySelector('.profile__account-description');
@@ -20,6 +20,10 @@ let formElement = container.querySelector('.popup__form');
 // Объявление переменных - Инпуты для редактирования имени и описания аккаунта в форме
 let nameInput = formElement.querySelector('.popup__form-item_value_name');
 let jobInput = formElement.querySelector('.popup__form-item_value_description');
+
+//Объявление переменных - Инпуты для создания новой карточки: название и ссылка
+let cardName = container.querySelector('.popup__form-item_value_card-name');
+let picLink = container.querySelector('.popup__form-item_value_picture-link');
 
 // Открытие pop-up; Присвоение инпутам значений имени и описания аккаунта, находящихся на странице
 editButton.addEventListener('click', function() {
@@ -42,15 +46,13 @@ function popupClose() {
   addPopup.classList.remove('popup_opened');
 };
 
-// popup.querySelector('.popup__close-button').addEventListener('click', function (evt) {
-//   const evtTarget = evt.target;
-//   console.log(evtTarget.parentElement.parentElement);
-//   // evtTarget.classList.remove('popup_opened');
+// closeButton.addEventListener('click', function (evt) {
+//   evt.target.parentElement.parentElement.classList.remove('popup_opened');
 // });
 
 // Функция - Логика редактирования значений имени и описания аккаунта через форму
 function formSubmitHandler (evt) {
-  evt.preventDefault(); 
+  evt.preventDefault();
 
   accountNameOnThePage.textContent = nameInput.value;
   accountDescrOnThePage.textContent = jobInput.value;
@@ -60,7 +62,7 @@ function formSubmitHandler (evt) {
 
 formElement.addEventListener('submit', formSubmitHandler);
 
-// Карточки, загружаемые 
+// Карточки, стартовые карточки
 const cardsContainer = container.querySelector('.places-cards');
 
 const initialCards = [
@@ -90,24 +92,28 @@ const initialCards = [
   }
 ];
 
+const cardTemplate = container.querySelector('#card-template').content;
+
 function cardsDisplay () {
-  const cardTemplate = container.querySelector('#card-template').content;
-  
   initialCards.forEach(function (item) {
-    
+
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
 
     cardElement.querySelector('.card__title').textContent = item.name;
-    cardElement.querySelector('.card__photo').setAttribute('src', item.link); //сделать изменения для атрибута src 
+    cardElement.querySelector('.card__photo').setAttribute('src', item.link);
 
     cardsContainer.append(cardElement);
 
-  }) 
-    
+  })
+
 };
 
 cardsDisplay ();
 
+
+function addNewCard () {
+
+}
 
 
 
