@@ -39,6 +39,8 @@
             </div>
           </article>
           <article class="card">
+            <button type="button" class="card__delete-button" aria-label="Удалить" title="Удалить"></button>
+            <img class="card__delete" src="./images/trash.svg">
             <img class="card__photo" src="./images/elbrus.jpg" alt="Гора Эльбрус">
             <div class="card__info">
               <h2 class="card__title">Гора Эльбрус</h2>
@@ -102,15 +104,20 @@
               <input type="text" id="card-name" name="card-name" placeholder="Название" value="" class="popup__form-item popup__form-item_value_card-name" required>
               <input type="text" id="picture-link" name="picture-link" placeholder="Ссылка на картинку" value="" class="popup__form-item popup__form-item_value_picture-link" required>
             </fieldset>
-            <button type="submit" name="edit-form" class="popup__save-button">Создать</button>
+            <button type="submit" name="add-form" class="popup__save-button">Создать</button>
           </form>
           <button type="button" id="closeButtonAdd" class="popup__close-button darkening" aria-label="Закрыть" title="Закрыть"></button>
         </div>
       </div>
 
+      <div class="popup" id="image-popup">
+        
+      </div>
+
       <template id="card-template">
         <article class="card">
-          <img class="card__photo" src="" alt="">
+          <button type="button" class="card__delete-button darkening" aria-label="Удалить" title="Удалить"></button>
+          <img class="card__photo" src="#" alt="#">
           <div class="card__info">
             <h2 class="card__title"></h2>
             <button type="button" class="card__like-button" aria-label="Нравится" title="Нравится" ></button>

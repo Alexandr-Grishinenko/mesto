@@ -2,10 +2,8 @@ let container = document.querySelector('.page');
 
 // Объявление переменных - Кнопки открытия/закрытия pop-up
 let editButton = container.querySelector('.profile__edit-button');
-let closeButtonEdit = container.querySelector('#closeButtonEdit');
-let closeButtonAdd = container.querySelector('#closeButtonAdd');
 let addButton = container.querySelector('.profile__add-button');
-
+let closeButtons = container.querySelectorAll('.popup__close-button');
 
 let editPopup = container.querySelector('#edit-popup');
 let addPopup = container.querySelector('#add-popup');
@@ -14,17 +12,17 @@ let addPopup = container.querySelector('#add-popup');
 let accountNameOnThePage = container.querySelector('.profile__account-name');
 let accountDescrOnThePage = container.querySelector('.profile__account-description');
 
-// Объявление переменных - Форма редактирования имени и описания аккаунта
-let formElement = container.querySelector('.popup__form');
+// Объявление переменных - Формы
+let popupForms = container.querySelectorAll('.popup__form');
 
-// Объявление переменных - Инпуты для редактирования имени и описания аккаунта в форме
-let nameInput = formElement.querySelector('.popup__form-item_value_name');
-let jobInput = formElement.querySelector('.popup__form-item_value_description');
+// Объявление переменных - Инпуты для формы редактирования
+let nameInput = container.querySelector('.popup__form-item_value_name');
+let jobInput = container.querySelector('.popup__form-item_value_description');
 
-//Объявление переменных - Инпуты для создания новой карточки: название и ссылка
-let cardName = container.querySelector('.popup__form-item_value_card-name');
-let picLink = container.querySelector('.popup__form-item_value_picture-link');
+// Объявление переменных - Контейнер с карточками
+const cardsContainer = container.querySelector('.places-cards');
 
+// ________________________________________________
 // Открытие pop-up; Присвоение инпутам значений имени и описания аккаунта, находящихся на странице
 editButton.addEventListener('click', function() {
     editPopup.classList.add('popup_opened');
@@ -37,33 +35,66 @@ addButton.addEventListener('click', function() {
   addPopup.classList.add('popup_opened');
 });
 
-//Закрытие pop-up по нажатию на крестик
-closeButtonEdit.addEventListener('click', popupClose);
-closeButtonAdd.addEventListener('click', popupClose);
+// ________________________________________________
+// Закрытие pop-up по нажатию на крестик
 
-function popupClose() {
-  editPopup.classList.remove('popup_opened');
-  addPopup.classList.remove('popup_opened');
+function popupClose(item) {
+  item.target.closest('.popup').classList.remove('popup_opened');
 };
 
-// closeButton.addEventListener('click', function (evt) {
-//   evt.target.parentElement.parentElement.classList.remove('popup_opened');
-// });
+closeButtons.forEach(function (evt) {
+  evt.addEventListener('click', popupClose) ;
+});
 
-// Функция - Логика редактирования значений имени и описания аккаунта через форму
+// ________________________________________________
+// Функция добавления новой карточки из template
+function addNewCard (cardNameValue, picLinkValue) {
+  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
+
+  cardElement.querySelector('.card__title').textContent = cardNameValue;
+  cardElement.querySelector('.card__photo').setAttribute('src', picLinkValue);
+  cardElement.querySelector('.card__like-button').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('card__like-button_liked');
+    }
+  );
+  cardElement.querySelector('.card__delete-button').addEventListener('click', function (evt) {
+    evt.target.closest('.card').remove();
+    }
+  );
+
+  cardsContainer.prepend(cardElement);
+};
+
+// ________________________________________________
+// Функция - Логика форм при нажатии на кнопку submit
 function formSubmitHandler (evt) {
   evt.preventDefault();
 
-  accountNameOnThePage.textContent = nameInput.value;
-  accountDescrOnThePage.textContent = jobInput.value;
+  console.log(evt.target.id);
 
-  popupClose();
+  if (evt.target.id === 'edit-form') {
+    accountNameOnThePage.textContent = nameInput.value;
+    accountDescrOnThePage.textContent = jobInput.value;
+
+  } else if (evt.target.id === 'add-form') {
+
+    const cardName = container.querySelector('.popup__form-item_value_card-name');
+    const picLink = container.querySelector('.popup__form-item_value_picture-link');
+  
+    addNewCard(cardName.value, picLink.value);
+  
+    cardName.value = '';
+    picLink.value = '';
+  }
+  evt.target.closest('.popup').classList.remove('popup_opened');
 };
 
-formElement.addEventListener('submit', formSubmitHandler);
+popupForms.forEach (function (evt) {
+  evt.addEventListener('submit', formSubmitHandler);
+});
 
-// Карточки, стартовые карточки
-const cardsContainer = container.querySelector('.places-cards');
+// ________________________________________________
+// Отображение карточек при загрузке/перезагрузке страницы
 
 const initialCards = [
   {
@@ -103,19 +134,20 @@ function cardsDisplay () {
     cardElement.querySelector('.card__photo').setAttribute('src', item.link);
 
     cardsContainer.append(cardElement);
+    cardElement.querySelector('.card__like-button').addEventListener('click', function (evt) {
+      evt.target.classList.toggle('card__like-button_liked');
+      }
+    );
+    cardElement.querySelector('.card__delete-button').addEventListener('click', function (evt) {
+      evt.target.closest('.card').remove();
+      }
+    );
 
   })
 
 };
 
 cardsDisplay ();
-
-
-function addNewCard () {
-
-}
-
-
 
 
 
