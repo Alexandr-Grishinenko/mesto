@@ -1,7 +1,6 @@
 .places-cards {
   display: grid;
   grid-template-columns: repeat(3, 282px);
-  grid-template-rows: repeat(2, 361px);
   justify-content: center;
   align-content: center;
   gap: 20px 17px;

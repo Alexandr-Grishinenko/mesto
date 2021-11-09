@@ -110,8 +110,12 @@
         </div>
       </div>
 
-      <div class="popup" id="image-popup">
-        
+      <div class="popup image-popup" id="image-popup">
+        <figure class="image-popup__container">
+          <img src="#" alt="#" class="image-popup__picture">
+          <figcaption class="image-popup__caption"></figcaption>
+          <button type="button" id="closeButtonAdd" class="popup__close-button darkening" aria-label="Закрыть" title="Закрыть"></button>
+        </figure>
       </div>
 
       <template id="card-template">
@@ -126,6 +130,7 @@
       </template>
 
     </div>
+    <script src="./scripts/initial-cards.js"></script>
     <script src="./scripts/script.js"></script>
   </body>
 
