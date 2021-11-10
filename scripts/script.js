@@ -16,6 +16,9 @@ const accountDescrOnThePage = container.querySelector('.profile__account-descrip
 
 // Объявление переменных - Формы
 const popupForms = container.querySelectorAll('.popup__form');
+const editForm = editPopup.querySelector('#edit-form');
+const addForm = addPopup.querySelector('#add-form');
+
 
 // Объявление переменных - Инпуты для формы редактирования
 const nameInput = container.querySelector('.popup__form-item_value_name');
@@ -25,10 +28,14 @@ const jobInput = container.querySelector('.popup__form-item_value_description');
 const cardsContainer = container.querySelector('.places-cards');
 const cardTemplate = container.querySelector('#card-template').content;
 
+// Объявление переменных - Изображение и название для imagePopup
+const imagePopupPicture = imagePopup.querySelector('.image-popup__picture');
+const imagePopupCaption = imagePopup.querySelector('.image-popup__caption');
+
 // ________________________________________________
 // Открытие pop-up; Присвоение инпутам значений имени и описания аккаунта, находящихся на странице
-function openPopup (evt) {
-  evt.classList.add('popup_opened');
+function openPopup (popup) {
+  popup.classList.add('popup_opened');
 };
 
 editButton.addEventListener('click', function() {
@@ -44,17 +51,18 @@ addButton.addEventListener('click', function() {
 // ________________________________________________
 // Закрытие pop-up по нажатию на крестик
 
-function closePopup(item) {
-  item.target.closest('.popup').classList.remove('popup_opened');
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
 };
 
-closeButtons.forEach(function (evt) {
-  evt.addEventListener('click', closePopup) ;
+closeButtons.forEach(function (closeButton) {
+  closeButton.addEventListener('click', () => closePopup(closeButton.closest('.popup'))) ;
 });
 
 // ________________________________________________
-// Функция добавления новой карточки из template /  / удаление карточки
-function addNewCard (cardNameValue, picLinkValue) {
+// Функция создания новой карточки из template
+
+function createCard (cardNameValue, picLinkValue) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
 
   const cardPhoto = cardElement.querySelector('.card__photo');
@@ -65,8 +73,7 @@ function addNewCard (cardNameValue, picLinkValue) {
   // Открытие картинки на полный экран
   cardPhoto.addEventListener('click', function () {
 
-    imagePopup.querySelector('.image-popup__caption').textContent = cardNameValue;
-    const imagePopupPicture = imagePopup.querySelector('.image-popup__picture');
+    imagePopupCaption.textContent = cardNameValue;
     imagePopupPicture.src = picLinkValue;
     imagePopupPicture.alt = cardNameValue;
 
@@ -83,39 +90,50 @@ function addNewCard (cardNameValue, picLinkValue) {
     evt.target.closest('.card').remove();
     });
 
-  cardsContainer.prepend(cardElement);
+  return cardElement; 
+}
+
+// ________________________________________________
+// Функция добавления новой карточки в cardsContainer
+
+function addCard (cardNameValue, picLinkValue) {
+  cardsContainer.prepend(createCard(cardNameValue, picLinkValue));
 };
 
 // ________________________________________________
-// Функция - Логика форм при нажатии на кнопку submit
+// Функция - Логика формы редактирования профиля при нажатии на кнопку submit
 
-function formSubmitHandler (evt) {
+function handleProfileFormSubmit (evt) {
   evt.preventDefault();
 
-  if (evt.target.id === 'edit-form') {
-    accountNameOnThePage.textContent = nameInput.value;
-    accountDescrOnThePage.textContent = jobInput.value;
+  accountNameOnThePage.textContent = nameInput.value;
+  accountDescrOnThePage.textContent = jobInput.value;
 
-  } else if (evt.target.id === 'add-form') {
-
-    const cardName = container.querySelector('.popup__form-item_value_card-name');
-    const picLink = container.querySelector('.popup__form-item_value_picture-link');
-
-    addNewCard(cardName.value, picLink.value);
-
-    cardName.value = '';
-    picLink.value = '';
-  };
-  evt.target.closest('.popup').classList.remove('popup_opened');
+  closePopup(editPopup);
 };
+editForm.addEventListener('submit', handleProfileFormSubmit);
 
-popupForms.forEach (function (evt) {
-  evt.addEventListener('submit', formSubmitHandler);
-});
+// ________________________________________________
+// Функция - Логика формы добавления карточки при нажатии на кнопку submit
+
+function handleAddFormSubmit (evt) {
+  evt.preventDefault();
+
+  const cardName = container.querySelector('.popup__form-item_value_card-name');
+  const picLink = container.querySelector('.popup__form-item_value_picture-link');
+
+  addCard(cardName.value, picLink.value);
+
+  cardName.value = '';
+  picLink.value = '';
+
+  closePopup(addPopup);
+};
+addForm.addEventListener('submit', handleAddFormSubmit);
 
 // ________________________________________________
 // Отображение карточек при загрузке/перезагрузке страницы
 
 initialCards.forEach(function (item) {
-  addNewCard (item.name, item.link);
+  addCard (item.name, item.link);
 });
