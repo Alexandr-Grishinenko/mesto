@@ -15,10 +15,8 @@ const accountNameOnThePage = container.querySelector('.profile__account-name');
 const accountDescrOnThePage = container.querySelector('.profile__account-description');
 
 // Объявление переменных - Формы
-const popupForms = container.querySelectorAll('.popup__form');
 const editForm = editPopup.querySelector('#edit-form');
 const addForm = addPopup.querySelector('#add-form');
-
 
 // Объявление переменных - Инпуты для формы редактирования
 const nameInput = container.querySelector('.popup__form-item_value_name');
