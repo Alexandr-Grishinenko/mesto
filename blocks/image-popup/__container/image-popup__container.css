@@ -1,6 +1,4 @@
 .image-popup__container {
   position: relative;
-  display: grid;
-  row-gap: 10px;
 }
 

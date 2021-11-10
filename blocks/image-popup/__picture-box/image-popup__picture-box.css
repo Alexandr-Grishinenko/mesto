@@ -1,0 +1,5 @@
+.image-popup__picture-box {
+  margin: 0;
+  display: grid;
+  row-gap: 10px;
+}
