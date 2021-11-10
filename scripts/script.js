@@ -27,29 +27,29 @@ const cardTemplate = container.querySelector('#card-template').content;
 
 // ________________________________________________
 // Открытие pop-up; Присвоение инпутам значений имени и описания аккаунта, находящихся на странице
-function popupOpen (evt) {
+function openPopup (evt) {
   evt.classList.add('popup_opened');
 };
 
 editButton.addEventListener('click', function() {
     nameInput.value = accountNameOnThePage.textContent;
     jobInput.value = accountDescrOnThePage.textContent;
-    popupOpen(editPopup);
+    openPopup(editPopup);
   });
 
 addButton.addEventListener('click', function() {
-  popupOpen(addPopup);
+  openPopup(addPopup);
 });
 
 // ________________________________________________
 // Закрытие pop-up по нажатию на крестик
 
-function popupClose(item) {
+function closePopup(item) {
   item.target.closest('.popup').classList.remove('popup_opened');
 };
 
 closeButtons.forEach(function (evt) {
-  evt.addEventListener('click', popupClose) ;
+  evt.addEventListener('click', closePopup) ;
 });
 
 // ________________________________________________
@@ -70,7 +70,7 @@ function addNewCard (cardNameValue, picLinkValue) {
     imagePopupPicture.src = picLinkValue;
     imagePopupPicture.alt = cardNameValue;
 
-    popupOpen(imagePopup);
+    openPopup(imagePopup);
     });
 
   // Действие для кнопки like
