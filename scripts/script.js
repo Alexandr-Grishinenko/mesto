@@ -6,6 +6,7 @@ const addButton = container.querySelector('.profile__add-button');
 const closeButtons = container.querySelectorAll('.popup__close-button');
 
 // Объявление переменных - popup
+const allPopup = container.querySelectorAll('.popup');
 const editPopup = container.querySelector('#edit-popup');
 const addPopup = container.querySelector('#add-popup');
 const imagePopup = container.querySelector('#image-popup');
@@ -31,14 +32,51 @@ const imagePopupPicture = imagePopup.querySelector('.image-popup__picture');
 const imagePopupCaption = imagePopup.querySelector('.image-popup__caption');
 
 // ________________________________________________
+// Закрытие pop-up окон по нажатию на крестик
+
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+  popup.removeEventListener('keydown', pressEscape);
+};
+
+closeButtons.forEach(function (closeButton) {
+  closeButton.addEventListener('click', () => closePopup(closeButton.closest('.popup'))) ;
+});
+
+// ________________________________________________
+// Закрытие pop-up окон по нажатию на оверлей
+allPopup.forEach((popup) => {
+  popup.addEventListener('click', function(evt) {
+    if (evt.target !== popup) {
+      return;
+    };
+    closePopup(popup);
+  });
+});
+
+// ________________________________________________
+// Функция определения нажатия "Escape"
+function pressEscape(evt) {
+  console.log(evt.key);
+  if (evt.key === 'Escape') {
+    console.log('Escape pressed');
+    closePopup(popup);
+  };
+};
+
+
+// ________________________________________________
 // Открытие pop-up; Присвоение инпутам значений имени и описания аккаунта, находящихся на странице
 function openPopup (popup) {
+  setEventListeners(popup);
   popup.classList.add('popup_opened');
+  popup.addEventListener('keydown', pressEscape);
 };
 
 editButton.addEventListener('click', function() {
     nameInput.value = accountNameOnThePage.textContent;
     jobInput.value = accountDescrOnThePage.textContent;
+    setEventListeners(editForm);
     openPopup(editPopup);
   });
 
@@ -46,16 +84,6 @@ addButton.addEventListener('click', function() {
   openPopup(addPopup);
 });
 
-// ________________________________________________
-// Закрытие pop-up по нажатию на крестик
-
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-};
-
-closeButtons.forEach(function (closeButton) {
-  closeButton.addEventListener('click', () => closePopup(closeButton.closest('.popup'))) ;
-});
 
 // ________________________________________________
 // Функция создания новой карточки из template
@@ -88,7 +116,7 @@ function createCard (cardNameValue, picLinkValue) {
     evt.target.closest('.card').remove();
     });
 
-  return cardElement; 
+  return cardElement;
 }
 
 // ________________________________________________
