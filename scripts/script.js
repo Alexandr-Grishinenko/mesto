@@ -20,8 +20,8 @@ const editForm = editPopup.querySelector('#edit-form');
 const addForm = addPopup.querySelector('#add-form');
 
 // Объявление переменных - Инпуты для формы редактирования
-const nameInput = container.querySelector('.popup__form-item_value_name');
-const jobInput = container.querySelector('.popup__form-item_value_description');
+const nameInput = container.querySelector('.popup__input_value_name');
+const jobInput = container.querySelector('.popup__input_value_description');
 
 // Объявление переменных - Контейнер с карточками / Шаблон карточки
 const cardsContainer = container.querySelector('.places-cards');
@@ -36,7 +36,7 @@ const imagePopupCaption = imagePopup.querySelector('.image-popup__caption');
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  popup.removeEventListener('keydown', pressEscape);
+  window.removeEventListener('keydown', pressEscape);
 };
 
 closeButtons.forEach(function (closeButton) {
@@ -55,32 +55,34 @@ allPopup.forEach((popup) => {
 });
 
 // ________________________________________________
-// Функция определения нажатия "Escape"
-function pressEscape(evt) {
-  console.log(evt.key);
-  if (evt.key === 'Escape') {
-    console.log('Escape pressed');
-    closePopup(popup);
+// Функция закрытия pop-up окон по нажатию на "Escape"
+
+function pressEscape(keydown) {
+  if (keydown.key === 'Escape') {
+    allPopup.forEach((popup) => {
+      if(popup.classList.contains('popup_opened')) {
+        closePopup(popup);
+      };
+    }); 
   };
 };
-
 
 // ________________________________________________
 // Открытие pop-up; Присвоение инпутам значений имени и описания аккаунта, находящихся на странице
 function openPopup (popup) {
-  setEventListeners(popup);
   popup.classList.add('popup_opened');
-  popup.addEventListener('keydown', pressEscape);
+  window.addEventListener('keydown', pressEscape);
 };
 
 editButton.addEventListener('click', function() {
     nameInput.value = accountNameOnThePage.textContent;
     jobInput.value = accountDescrOnThePage.textContent;
-    setEventListeners(editForm);
+    setEventListeners(editPopup);
     openPopup(editPopup);
   });
 
 addButton.addEventListener('click', function() {
+  setEventListeners(addPopup);
   openPopup(addPopup);
 });
 
@@ -145,8 +147,8 @@ editForm.addEventListener('submit', handleProfileFormSubmit);
 function handleAddFormSubmit (evt) {
   evt.preventDefault();
 
-  const cardName = container.querySelector('.popup__form-item_value_card-name');
-  const picLink = container.querySelector('.popup__form-item_value_picture-link');
+  const cardName = container.querySelector('.popup__input_value_card-name');
+  const picLink = container.querySelector('.popup__input_value_picture-link');
 
   addCard(cardName.value, picLink.value);
 

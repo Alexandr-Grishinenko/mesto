@@ -45,15 +45,15 @@
           <form class="popup__form" id="edit-form" name="edit-form" novalidate>
             <fieldset class="popup__input-container">
               <label class="popup__form-field">
-                <input type="text" id="account-name" name="account-name" value="" class="popup__form-item popup__form-item_value_name" minlength="2" maxlength="40" required>
-                <span class="popup__form-item-error account-name-error"></span>
+                <input type="text" id="account-name" name="account-name" value="" class="popup__input popup__input_value_name" minlength="2" maxlength="40" required>
+                <span class="popup__error account-name-error"></span>
               </label>
               <label class="popup__form-field">
-                <input type="text" id="account-description" name="account-description" value="" class="popup__form-item popup__form-item_value_description" minlength="2" maxlength="200" required>
-                <span class="popup__form-item-error account-description-error"></span>
+                <input type="text" id="account-description" name="account-description" value="" class="popup__input popup__input_value_description" minlength="2" maxlength="200" required>
+                <span class="popup__error account-description-error"></span>
               </label>
             </fieldset>
-            <button type="submit" name="edit-form" class="popup__save-button">Сохранить</button>
+            <button type="submit" name="edit-form" class="popup__button">Сохранить</button>
           </form>
           <button type="button" id="closeButtonEdit" class="popup__close-button darkening" aria-label="Закрыть" title="Закрыть"></button>
         </div>
@@ -65,15 +65,15 @@
           <form class="popup__form" id="add-form" name="add-form" novalidate>
             <fieldset class="popup__input-container">
               <label class="popup__form-field">
-                <input type="text" id="card-name" name="card-name" placeholder="Название" value="" class="popup__form-item popup__form-item_value_card-name" minlength="2" maxlength="30" required>
-                <span class="popup__form-item-error card-name-error"></span>
+                <input type="text" id="card-name" name="card-name" placeholder="Название" value="" class="popup__input popup__input_value_card-name" minlength="2" maxlength="30" required>
+                <span class="popup__error card-name-error"></span>
               </label>
               <label class="popup__form-field">
-                <input type="url" id="picture-link" name="picture-link" placeholder="Ссылка на картинку" value="" class="popup__form-item popup__form-item_value_picture-link" required>
-                <span class="popup__form-item-error picture-link-error"></span>
+                <input type="url" id="picture-link" name="picture-link" placeholder="Ссылка на картинку" value="" class="popup__input popup__input_value_picture-link" required>
+                <span class="popup__error picture-link-error"></span>
               </label>
             </fieldset>
-            <button type="submit" name="add-form" class="popup__save-button">Создать</button>
+            <button type="submit" name="add-form" class="popup__button">Создать</button>
           </form>
           <button type="button" id="closeButtonAdd" class="popup__close-button darkening" aria-label="Закрыть" title="Закрыть"></button>
         </div>

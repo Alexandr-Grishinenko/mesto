@@ -1,4 +1,4 @@
-.popup__save-button_inactive {
+.popup__button_disabled {
   background-color: #fff;
   border: 1px solid #000000;
   color: #000;
@@ -7,6 +7,6 @@
   pointer-events: none;
 }
 
-.popup__save-button_inactive:hover {
+.popup__button_disabled:hover {
   background-color: #fff;
 }
