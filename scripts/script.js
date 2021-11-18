@@ -6,7 +6,7 @@ const addButton = container.querySelector('.profile__add-button');
 const closeButtons = container.querySelectorAll('.popup__close-button');
 
 // Объявление переменных - popup
-const allPopup = container.querySelectorAll('.popup');
+const allPopups = container.querySelectorAll('.popup');
 const editPopup = container.querySelector('#edit-popup');
 const addPopup = container.querySelector('#add-popup');
 const imagePopup = container.querySelector('#image-popup');
@@ -19,9 +19,18 @@ const accountDescrOnThePage = container.querySelector('.profile__account-descrip
 const editForm = editPopup.querySelector('#edit-form');
 const addForm = addPopup.querySelector('#add-form');
 
-// Объявление переменных - Инпуты для формы редактирования
-const nameInput = container.querySelector('.popup__input_value_name');
-const jobInput = container.querySelector('.popup__input_value_description');
+// Объявление переменных - Кнопки submit
+const editSubmitButton = editPopup.querySelector('.popup__button');
+const addSubmitButton = addPopup.querySelector('.popup__button');
+
+// Объявление переменных - Инпуты форм
+const allEditInputs = Array.from(editPopup.querySelectorAll('.popup__input'));
+const nameInput = editPopup.querySelector('.popup__input_value_name');
+const jobInput = editPopup.querySelector('.popup__input_value_description');
+
+const allAddInputs = Array.from(addPopup.querySelectorAll('.popup__input'));
+const cardName = addPopup.querySelector('.popup__input_value_card-name');
+const picLink = addPopup.querySelector('.popup__input_value_picture-link');
 
 // Объявление переменных - Контейнер с карточками / Шаблон карточки
 const cardsContainer = container.querySelector('.places-cards');
@@ -45,7 +54,7 @@ closeButtons.forEach(function (closeButton) {
 
 // ________________________________________________
 // Закрытие pop-up окон по нажатию на оверлей
-allPopup.forEach((popup) => {
+allPopups.forEach((popup) => {
   popup.addEventListener('click', function(evt) {
     if (evt.target !== popup) {
       return;
@@ -57,9 +66,9 @@ allPopup.forEach((popup) => {
 // ________________________________________________
 // Функция закрытия pop-up окон по нажатию на "Escape"
 
-function pressEscape(keydown) {
-  if (keydown.key === 'Escape') {
-    allPopup.forEach((popup) => {
+function pressEscape(evt) {
+  if (evt.key === 'Escape') {
+    allPopups.forEach((popup) => {
       if(popup.classList.contains('popup_opened')) {
         closePopup(popup);
       };
@@ -75,14 +84,14 @@ function openPopup (popup) {
 };
 
 editButton.addEventListener('click', function() {
-    nameInput.value = accountNameOnThePage.textContent;
-    jobInput.value = accountDescrOnThePage.textContent;
-    setEventListeners(editPopup);
-    openPopup(editPopup);
-  });
+  nameInput.value = accountNameOnThePage.textContent;
+  jobInput.value = accountDescrOnThePage.textContent;
+  toggleButtonState(allEditInputs, editSubmitButton, enableValidation);
+  openPopup(editPopup);
+});
 
 addButton.addEventListener('click', function() {
-  setEventListeners(addPopup);
+  toggleButtonState(allAddInputs, addSubmitButton, enableValidation);
   openPopup(addPopup);
 });
 
@@ -146,9 +155,6 @@ editForm.addEventListener('submit', handleProfileFormSubmit);
 
 function handleAddFormSubmit (evt) {
   evt.preventDefault();
-
-  const cardName = container.querySelector('.popup__input_value_card-name');
-  const picLink = container.querySelector('.popup__input_value_picture-link');
 
   addCard(cardName.value, picLink.value);
 
