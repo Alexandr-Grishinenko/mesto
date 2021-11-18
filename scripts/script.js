@@ -72,7 +72,7 @@ function pressEscape(evt) {
       if(popup.classList.contains('popup_opened')) {
         closePopup(popup);
       };
-    }); 
+    });
   };
 };
 
@@ -86,19 +86,18 @@ function openPopup (popup) {
 editButton.addEventListener('click', function() {
   nameInput.value = accountNameOnThePage.textContent;
   jobInput.value = accountDescrOnThePage.textContent;
-  toggleButtonState(allEditInputs, editSubmitButton, enableValidation);
+  toggleButtonState(allEditInputs, editSubmitButton, settings);
   openPopup(editPopup);
 });
 
 addButton.addEventListener('click', function() {
-  toggleButtonState(allAddInputs, addSubmitButton, enableValidation);
+  toggleButtonState(allAddInputs, addSubmitButton, settings);
   openPopup(addPopup);
 });
 
 
 // ________________________________________________
 // Функция создания новой карточки из template
-
 function createCard (cardNameValue, picLinkValue) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
 
